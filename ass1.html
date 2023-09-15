@@ -12,6 +12,7 @@
 
 <div id="app">
     <h1>Conference Rooms</h1>
+    <transition-group name="list1">
     <table class="table-style">
         <thead>
             <tr>
@@ -42,8 +43,10 @@
             </tr>
         </tbody>
     </table>
+    </transition-group>
 
     <button @click="adding" id="showbtn">Add Room</button>
+    <transition name="fade">
     <div v-if="showForm" class="form0">
         <form @submit.prevent="addRoom">
           <h2> {{formTitle}} </h2>
@@ -52,7 +55,7 @@
               <input v-model="newRoom.name" />
           </label>
           <!-- Type Selection -->
-          <label for="type" class="form-item">Type:
+          <label class="form-item">Type:
             <label>
               <input type="radio" name="answer" value="small" v-model="newRoom.type">Small
             </label>
@@ -105,6 +108,7 @@
       </form>
       
     </div>
+    </transition>
 </div>
   
   <script type="module">

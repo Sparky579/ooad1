@@ -30,6 +30,7 @@
 }
 
 
+
 /* 表格样式 */
 .table-style {
     width: 75%;
@@ -86,14 +87,51 @@
     padding: 20px 20px 20px 20px;           /* 20px padding inside the border */
     width: 90%;              /* Example width, adjust as needed */
     margin: 0 auto;          /* Center the form on the page */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Optional: Add a subtle shadow for a better visual appearance */
-    
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  !* Optional: Add a subtle shadow for a better visual appearance *!*/
 }
 .form0 form{
     border: 4px solid #333;  /* 2px thick solid border with a color of #333 (dark gray) */
     display: inline-block;
     padding: 10px 25px 25px 25px;
+    box-shadow: 0 0 30px rgba(18, 18, 19, 0.4);
 }
+
+/* 进入和离开过渡 */
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 1s, margin-top 1s;
+}
+
+/* 初始状态 */
+.fade-enter-from, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+    opacity: 0;
+    margin-top: -490px;
+}
+
+/* 进入过渡的结束状态 */
+.fade-enter-to /* .fade-enter-active in <2.1.8 */ {
+    opacity: 1;
+    margin-top: 0;
+}
+
+/* 离开过渡的开始状态 */
+.fade-leave-from /* .fade-leave-active in <2.1.8 */ {
+    opacity: 1;
+    margin-top: 0;
+}
+
+.list1-move {
+    transition: transform 1s;
+}
+
+.list1-enter-active, .list1-leave-active {
+    transition: opacity 1s;
+}
+
+.list1-enter, .list1-leave-to /* .list-leave-active in <2.1.8 */ {
+    opacity: 0;
+}
+
+
 
 body {
     justify-content: center;
