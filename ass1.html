@@ -45,7 +45,9 @@
     </table>
     </transition-group>
 
-    <button @click="adding" id="showbtn">Add Room</button>
+    <button @click="adding" id="showbtn">
+        {{btnText}}
+    </button>
     <transition name="fade">
     <div v-if="showForm" class="form0">
         <form @submit.prevent="addRoom">
@@ -147,22 +149,28 @@
       };
     },
     computed: {
-    convertToDuration() {
-        return function(x) {
-          const hours = x % 24;
-          const days = Math.floor(x / 24);
+        convertToDuration() {
+            return function(x) {
+              const hours = x % 24;
+              const days = Math.floor(x / 24);
 
-          if (days > 0) {
-            if (hours > 0) {
-              return `${days}d ${hours}h`;
-            } else {
-              return `${days}d`;
-            }
-          } else {
-            return `${hours}h`;
-          }
-        };
-      },
+              if (days > 0) {
+                if (hours > 0) {
+                  return `${days}d ${hours}h`;
+                } else {
+                  return `${days}d`;
+                }
+              } else {
+                return `${hours}h`;
+              }
+            };
+          },
+        needShow() {
+            return this.isAdd ? (!this.showForm) : true;
+        },
+        btnText() {
+            return this.needShow ? "Add Room" : "Cancel";
+        }
     },
     methods: {
       addRoom() {
@@ -211,7 +219,8 @@
       },
       adding() {
         this.formTitle = "Add New Conference";
-        this.showForm = this.isAdd ? !this.showForm : true;
+        console.log(this.needShow);
+        this.showForm = this.needShow;
         this.isAdd = true;
         this.clearRoom();
       },
